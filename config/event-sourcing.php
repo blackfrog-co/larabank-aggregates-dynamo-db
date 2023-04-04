@@ -1,5 +1,8 @@
 <?php
 
+use BlackFrog\LaravelEventSourcingDynamodb\Snapshots\DynamoDbSnapshotRepository;
+use BlackFrog\LaravelEventSourcingDynamodb\StoredEvents\Repositories\DynamoDbStoredEventRepository;
+
 return [
 
     /*
@@ -59,14 +62,14 @@ return [
      * can change this to a class of your own. The only restriction is that
      * it should implement \Spatie\EventSourcing\StoredEvents\Repositories\EloquentStoredEventRepository.
      */
-    'stored_event_repository' => Spatie\EventSourcing\StoredEvents\Repositories\EloquentStoredEventRepository::class,
+    'stored_event_repository' => DynamoDbStoredEventRepository::class,
 
     /*
      * This class is responsible for storing snapshots. To add extra behaviour you
      * can change this to a class of your own. The only restriction is that
      * it should implement \Spatie\EventSourcing\Snapshots\EloquentSnapshotRepository.
      */
-    'snapshot_repository' => Spatie\EventSourcing\Snapshots\EloquentSnapshotRepository::class,
+    'snapshot_repository' => DynamoDbSnapshotRepository::class,
 
     /*
      * This class is responsible for storing events in the EloquentSnapshotRepository.
